@@ -1,0 +1,28 @@
+inventory = 0
+failed_entries = 0
+
+while True:
+    user_input = input("Enter stock quantity (or 'quit' to stop): ").strip()
+
+    if user_input.lower() == "quit":
+        break
+
+    if not user_input.isdigit():
+        print("Error: Invalid input. Please enter a whole positive number.")
+        failed_entries += 1
+        continue
+
+    quantity = int(user_input)
+
+    if quantity < 0:
+        print("Error: Negative numbers are not allowed.")
+        failed_entries += 1
+    else:
+        inventory += quantity
+        if inventory > 500:
+            print(f"OVERSTOCK ALERT! Total inventory ({inventory}) exceeds 500 units.")
+            break
+
+print("\n--- Summary Report ---")
+print(f"Total Units Processed: {inventory}")
+print(f"Number of Failed/Rejected Entries: {failed_entries}")
