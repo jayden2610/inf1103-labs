@@ -1,6 +1,23 @@
 inventory = 0
 failed_entries = 0
 
+def get_valid_input():
+ 
+    failed_count = 0
+
+    while True:
+        user_input = input("Enter stock quantity (or 'quit' to stop): ").strip()
+
+        if user_input.lower() == "quit":
+            return "quit", failed_count
+
+        if not user_input.isdigit():
+            print("Error: Invalid input. Please enter a whole positive number.")
+            failed_count += 1
+            continue
+
+        return int(user_input), failed_count
+
 while True:
     user_input = input("Enter stock quantity (or 'quit' to stop): ").strip()
 
