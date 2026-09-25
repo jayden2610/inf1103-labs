@@ -33,7 +33,25 @@ def generate_report(total_units, failed_attempts):
         log.write(f"Total Units Processed: {total_units}\n")
         log.write(f"Failed/Rejected Entries: {failed_attempts}\n")
 
-inventory = 0
+
+def load_inventory():
+    try:
+        with open("inventory_log.txt", "r") as log:
+            lines = log.readlines()
+    except FileNotFoundError:
+        return 0
+
+    inventory = 0
+    for line in lines:
+        if "Inventory: " in line:
+            inventory = int(line.split("Inventory: ")[1].strip())
+        elif "Total Units Processed: " in line:
+            inventory = int(line.split("Total Units Processed: ")[1].strip())
+
+    return inventory
+
+
+inventory = load_inventory()
 failed_entries = 0
 
 while True:
