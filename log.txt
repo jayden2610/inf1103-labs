@@ -1,3 +1,15 @@
+commit f190cbe11b6cb5254f5c60d8b64ac93cb785a962
+Author: Jayden <2603180@sit.singaporetech.edu.sg>
+Date:   Fri Sep 25 17:15:24 2026 +0800
+
+    Added load_inventory()
+
+commit 947283a27b23171541a65f4ded6a9f35eb68e10f
+Author: Jayden <2603180@sit.singaporetech.edu.sg>
+Date:   Fri Sep 25 17:08:00 2026 +0800
+
+    Added file logging to persistent_auditor.py
+
 commit b70c99806c0130c9b8ddcbab4e717eb235a25a47
 Author: Jayden <2603180@sit.singaporetech.edu.sg>
 Date:   Fri Sep 18 17:29:28 2026 +0800
