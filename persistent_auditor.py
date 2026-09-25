@@ -28,10 +28,7 @@ def generate_report(total_units, failed_attempts):
     print(f"Total Units Processed: {total_units}")
     print(f"Number of Failed/Rejected Entries: {failed_attempts}")
 
-    with open("inventory_log.txt", "a") as log:
-        log.write("--- Summary Report ---\n")
-        log.write(f"Total Units Processed: {total_units}\n")
-        log.write(f"Failed/Rejected Entries: {failed_attempts}\n")
+    save_inventory(total_units, failed_attempts)
 
 
 def load_inventory():
@@ -49,6 +46,13 @@ def load_inventory():
             inventory = int(line.split("Total Units Processed: ")[1].strip())
 
     return inventory
+
+
+def save_inventory(total_units, failed_attempts):
+    with open("inventory_log.txt", "a") as log:
+        log.write("--- Summary Report ---\n")
+        log.write(f"Total Units Processed: {total_units}\n")
+        log.write(f"Failed/Rejected Entries: {failed_attempts}\n")
 
 
 inventory = load_inventory()
