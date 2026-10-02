@@ -1,5 +1,6 @@
 inventory = []
 
+
 def add_product(inventory):
     print("\nAdd New Product")
     product_id = input("Product ID: ")
@@ -11,6 +12,51 @@ def add_product(inventory):
     inventory.append(product)
 
     print("\nProduct added successfully!")
+
+
+def find_product(inventory, product_id):
+    for product in inventory:
+        if product["id"] == product_id:
+            return product
+    return None
+
+
+def search_product(inventory):
+    print("\nSearch Product")
+    product_id = input("Enter Product ID: ")
+    product = find_product(inventory, product_id)
+
+    if product is None:
+        print("\nProduct not found.")
+        return
+
+    print("\nProduct Found")
+    print("-" * 48)
+    print(f"ID: {product['id']}")
+    print(f"Name: {product['name']}")
+    print(f"Price: ${product['price']:.2f}")
+    print(f"Stock: {product['stock']}")
+    print("-" * 48)
+
+
+def update_stock(inventory):
+    print("\nUpdate Stock")
+    product_id = input("Enter Product ID: ")
+    product = find_product(inventory, product_id)
+
+    if product is None:
+        print("\nProduct not found.")
+        return
+
+    print("\nProduct Found:")
+    print(f"Name: {product['name']}")
+    print(f"Current Stock: {product['stock']}")
+
+    new_stock = int(input("\nNew Stock Quantity: "))
+    product["stock"] = new_stock
+
+    print("\nStock updated successfully!")
+
 
 def display_all(inventory):
     if not inventory:
@@ -25,7 +71,11 @@ def display_all(inventory):
 
 
 # --- temporary test (delete once the menu is built) ---
-display_all(inventory)          # should print "No products in inventory."
-for _ in range(3):
-    add_product(inventory)
-display_all(inventory)
+inventory.append({"id": "P001", "name": "Laptop", "price": 1200.00, "stock": 15})
+inventory.append({"id": "P002", "name": "Mouse", "price": 25.50, "stock": 40})
+
+search_product(inventory)    # enter P002 -> shows Mouse
+search_product(inventory)    # enter P999 -> Product not found.
+update_stock(inventory)      # enter P002, then 50
+update_stock(inventory)      # enter P999 -> Product not found.
+display_all(inventory)       # Mouse should show Stock: 50

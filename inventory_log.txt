@@ -14,3 +14,11 @@ Delivery: +10 units | Tax: 1.00 | Inventory: 25
 --- Summary Report ---
 Total Units Processed: 25
 Failed/Rejected Entries: 0
+--- Summary Report ---
+Total Units Processed: 25
+Failed/Rejected Entries: 1
+Delivery: +2 units | Tax: 0.20 | Inventory: 27
+Delivery: +10 units | Tax: 1.00 | Inventory: 37
+--- Summary Report ---
+Total Units Processed: 37
+Failed/Rejected Entries: 1
