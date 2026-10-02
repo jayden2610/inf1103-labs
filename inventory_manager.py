@@ -1,6 +1,17 @@
+import json
+import os
 inventory = []
 
+def load_inventory():
+    if os.path.exists("inventory.json"):
+        print("inventory.json found.")
+        with open("inventory.json", "r") as file:
+            data = json.load(file)
+        print("Inventory loaded successfully.")
+        return data
 
+    print("inventory.json not found. Starting with an empty inventory.")
+    return []
 def add_product(inventory):
     print("\nAdd New Product")
     product_id = input("Product ID: ")
